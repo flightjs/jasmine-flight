@@ -1,8 +1,10 @@
 {
   "name": "flight-jasmine",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "lib/flight-jasmine.js",
   "ignore": [
-    "example"
+    "example",
+    "CONTRIBUTING.md",
+    ".travis.yml"
   ]
 }
