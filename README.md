@@ -8,81 +8,88 @@ Extensions to the Jasmine test framework for use with [Flight](https://github.co
 Copy [lib/flight-jasmine.js](lib/flight-jasmine.js) in to your app and load in test runner.
 
 ## Components
-    describeComponent('path/to/component', function () {
-        beforeEach(setupComponent);
+```javascript
+describeComponent('path/to/component', function () {
+  beforeEach(setupComponent);
 
-        it('should do x', function () {
-            // a component instance is now accessible as this.component
-            // the component root node is attached to the DOM
-            // the component root node is also available as this.$node
-        });
-    });
+  it('should do x', function () {
+    // a component instance is now accessible as this.component
+    // the component root node is attached to the DOM
+    // the component root node is also available as this.$node
+  });
+});
+```
 
 ## Mixins
-    describeMixin('path/to/mixin', function () {
-        // initialize the component and attach it to the DOM
-        beforeEach(setupComponent);
+```javascript
+describeMixin('path/to/mixin', function () {
+  // initialize the component and attach it to the DOM
+  beforeEach(setupComponent);
 
-        it('should do x', function () {
-            expect(this.component.doSomething()).toBe(expected);
-        });
-    });
+  it('should do x', function () {
+    expect(this.component.doSomething()).toBe(expected);
+  });
+});
+```
 
 ## Event spy
-    describeComponent('data/twitter_profile', function () {
-        beforeEach(setupComponent);
+```javascript
+describeComponent('data/twitter_profile', function () {
+  beforeEach(setupComponent);
 
-        describe('listens for uiNeedsTwitterUserId', function () {
+  describe('listens for uiNeedsTwitterUserId', function () {
 
-            // was the event triggered?
-            it('and triggers dataTwitterUserId', function () {
-                var eventSpy = spyOnEvent(document, 'dataTwitterProfile');
-                $(document).trigger('uiNeedsTwitterUserId', {
-                    screen_name: 'tbrd'
-                });
-                expect(eventSpy).toHaveBeenTriggeredOn(document);
-            });
-
-            // is the user id correct?
-            it('and has correct id', function () {
-                var eventSpy = spyOnEvent(document, 'dataTwitterUserId');
-                $(document).trigger('uiNeedsTwitteruserId', {
-                    screen_name: 'tbrd'
-                });
-                expect(eventSpy.mostRecentCall.data).toEqual({
-                    screen_name: 'tbrd',
-                    id: 4149861
-                });
-            });
-        });
+    // was the event triggered?
+    it('and triggers dataTwitterUserId', function () {
+      var eventSpy = spyOnEvent(document, 'dataTwitterProfile');
+      $(document).trigger('uiNeedsTwitterUserId', {
+        screen_name: 'tbrd'
+      });
+    expect(eventSpy).toHaveBeenTriggeredOn(document);
     });
 
+    // is the user id correct?
+    it('and has correct id', function () {
+      var eventSpy = spyOnEvent(document, 'dataTwitterUserId');
+      $(document).trigger('uiNeedsTwitteruserId', {
+        screen_name: 'tbrd'
+      });
+      expect(eventSpy.mostRecentCall.data).toEqual({
+        screen_name: 'tbrd',
+        id: 4149861
+      });
+    });
+  });
+});
+```
 ## setupComponent
-
-    setupComponent(optionalFixture, optionalOptions);
-
+```javascript
+setupComponent(optionalFixture, optionalOptions);
+```
 Calling setupComponent twice will create an instance, tear it down and create a new one.
 
 ### HTML Fixtures
-    describeComponent('ui/twitter_profile', function () {
-        // is the component attached to the fixture?
-        it('this.component.$node has class "foo"', function () {
-            setupComponent('<span class="foo">Test</span>');
-            expect(this.component.$node).toHaveClass('foo');
-        });
-    });
-
+```javascript
+describeComponent('ui/twitter_profile', function () {
+  // is the component attached to the fixture?
+  it('this.component.$node has class "foo"', function () {
+    setupComponent('<span class="foo">Test</span>');
+    expect(this.component.$node).toHaveClass('foo');
+  });
+});
+```
 ### Component Options
-    describeComponent('data/twitter_profile', function () {
-        // is the option set correctly?
-        it('this.component.attr.baseUrl is set', function () {
-            setupComponent({
-                baseUrl: 'http://twitter.com/1.1/'
-            });
-            expect(this.component.attr.baseUrl).toBe('http://twitter.com/1.1/');
-        });
+```javascript
+describeComponent('data/twitter_profile', function () {
+  // is the option set correctly?
+  it('this.component.attr.baseUrl is set', function () {
+    setupComponent({
+      baseUrl: 'http://twitter.com/1.1/'
     });
-
+  expect(this.component.attr.baseUrl).toBe('http://twitter.com/1.1/');
+  });
+});
+```
 # Teardown
 
 Components are automatically torn down after each test.
