@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Flight Unit Tests</title>
+  <link rel="stylesheet" href="/test/assets/jasmine/lib/bootstrap.css">
+  <link rel="stylesheet" href="/test/assets/jasmine/jasmine-bootstrap.css">
+
+  <!-- flight dependencies -->
+  <script src="/bower_components/jquery/jquery.js"></script>
+  <script src="/bower_components/es5-shim/es5-shim.js"></script>
+  <script src="/bower_components/es5-shim/es5-sham.js"></script>
+  <script src="/test/assets/require.js"></script>
+
+  <!-- jasmine & extensions -->
+  <script src="/test/assets/jasmine/jasmine.js"></script>
+  <script src="/test/assets/jasmine-jquery.js"></script>
+  <!-- jasmine reporters -->
+  <script src="/test/assets/jasmine/jasmine-bootstrap.js"></script>
+  <script src="/test/assets/phantom-jasmine/console-runner.js"></script>
+  <!-- flight-jasmine -->
+  <script src="/test/assets/flight-jasmine.js"></script>
+  <!-- spec runner -->
+  <script src="spec_runner.js"></script>
+
+  <style>
+    body { background: #333; }
+  </style>
+</head>
+
+<body>
+<script>
+
+  require.config({
+    // update paths & baseUrl to match your application structure
+    baseUrl: '../..',
+    paths: {
+      flight: 'bower_components/flight',
+      specs: 'test/specs'
+    }
+    // if you're having problems with caching, you might want to add the cache buster
+    // be aware this may cause problems in debugging
+    // , urlArgs: "bust=" + Date.now()
+  });
+
+  window.consoleReporter = new jasmine.ConsoleReporter();
+  jasmine.getEnv().addReporter(consoleReporter);
+  jasmine.getEnv().addReporter(new jasmine.BootstrapReporter());
+
+  var specs = [];
+
+  // read specs from url params
+  // eg : spec_runner.html?using_spec=ui/mixin_example_spec&using_spec=data/example_spec
+  if(window.location.search) {
+    var keyValuePairs = window.location.search.substring(1).split('&');
+    keyValuePairs.forEach(function(pair) {
+      var chunks = pair.split('=');
+      var key = chunks[0];
+      var value = chunks[1];
+      if(key == 'using_spec') {
+        specs.push('spec/' + value);
+      }
+    });
+  }
+
+  // or add manually
+  if (specs.length === 0) {
+    specs = [
+      'specs/data/example_spec',
+      'specs/ui/mixin_example_spec'
+    ];
+  }
+
+  console.log(specs);
+
+  runTests(specs);
+
+
+</script>
+
+
+</body>
+</html>

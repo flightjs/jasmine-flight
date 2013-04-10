@@ -1,0 +1,8 @@
+{
+  "name": "flight-jasmine",
+  "version": "0.0.1",
+  "main": "lib/flight-jasmine.js",
+  "ignore": [
+    "example"
+  ]
+}
