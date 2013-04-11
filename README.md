@@ -14,6 +14,10 @@ Or install it with [Bower](https://github.com/twitter/bower):
 bower install flight-jasmine --save
 ```
 
+**N.B.** flight-jasmine depends on
+[jasmine](https://github.com/pivotal/jasmine) and
+[jasmine-jquery](https://github.com/velesin/jasmine-jquery)
+
 ## Components
 
 ```javascript
