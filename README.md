@@ -5,7 +5,14 @@ Extensions to the Jasmine test framework for use with [Flight](https://github.co
 
 # Getting started
 
-Copy [lib/flight-jasmine.js](lib/flight-jasmine.js) in to your app and load in test runner.
+Include [flight-jasmine.js](https://raw.github.com/twitter/flight-jasmine/master/lib/flight-jasmine.js)
+in your app and load it in your test runner.
+
+Or install it with [Bower](https://github.com/twitter/bower):
+
+```bash
+bower install flight-jasmine --save
+```
 
 ## Components
 ```javascript
