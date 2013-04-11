@@ -15,6 +15,7 @@ bower install flight-jasmine --save
 ```
 
 ## Components
+
 ```javascript
 describeComponent('path/to/component', function () {
   beforeEach(setupComponent);
@@ -28,6 +29,7 @@ describeComponent('path/to/component', function () {
 ```
 
 ## Mixins
+
 ```javascript
 describeMixin('path/to/mixin', function () {
   // initialize the component and attach it to the DOM
@@ -40,6 +42,7 @@ describeMixin('path/to/mixin', function () {
 ```
 
 ## Event spy
+
 ```javascript
 describeComponent('data/twitter_profile', function () {
   beforeEach(setupComponent);
@@ -69,13 +72,17 @@ describeComponent('data/twitter_profile', function () {
   });
 });
 ```
+
 ## setupComponent
+
 ```javascript
 setupComponent(optionalFixture, optionalOptions);
 ```
-Calling setupComponent twice will create an instance, tear it down and create a new one.
+
+Calling `setupComponent` twice will create an instance, tear it down and create a new one.
 
 ### HTML Fixtures
+
 ```javascript
 describeComponent('ui/twitter_profile', function () {
   // is the component attached to the fixture?
@@ -85,7 +92,9 @@ describeComponent('ui/twitter_profile', function () {
   });
 });
 ```
+
 ### Component Options
+
 ```javascript
 describeComponent('data/twitter_profile', function () {
   // is the option set correctly?
@@ -97,6 +106,7 @@ describeComponent('data/twitter_profile', function () {
   });
 });
 ```
+
 # Teardown
 
 Components are automatically torn down after each test.
@@ -108,7 +118,6 @@ Flight components are defined by their interface: the events they trigger and ha
 However, Flight does not expose component instances so testing them can be tricky. Also, out-of-the-box Jasmine does not support testing of jQuery Events.
 
 flight-jasmine provides the developer with simple methods for setting up, exposing and tearing down component instances, and for testing whether expected events are triggered.
-
 
 ## Contributing to this project
 
@@ -125,10 +134,11 @@ review the [guidelines for contributing](CONTRIBUTING.md).
 
 ## Thanks
 
-+ [@esbie](http://github.com/esbie) and [@skilldrick](http://github.com/skilldrick) for creating the original describeComponent & describeMixin methods
++ [@esbie](http://github.com/esbie) and [@skilldrick](http://github.com/skilldrick) for creating the original `describeComponent` & `describeMixin` methods
 + [@necolas] (http://github.com/necolas) for CONTRIBUTING.md
 
 ## License
+
 Copyright 2013 Twitter, Inc and other contributors.
 
 Licensed under the MIT License
