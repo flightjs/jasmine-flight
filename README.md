@@ -11,7 +11,7 @@ in your app and load it in your test runner.
 Or install it with [Bower](https://github.com/twitter/bower):
 
 ```bash
-bower install flight-jasmine --save
+bower install --save-dev flight-jasmine
 ```
 
 **N.B.** flight-jasmine depends on
