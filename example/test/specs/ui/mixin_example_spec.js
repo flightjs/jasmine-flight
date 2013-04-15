@@ -15,7 +15,7 @@ describeMixin('app/ui/mixin_example', function () {
       setupComponent(fixture, {
         barSelector: '.js-bar'
       });
-      expect(this.component.$node.find('.js-bar').length).toBe(1);
+      expect(this.component.$node.filter('.js-bar').length).toBe(1);
     });
 
     it ('test jQuery fixture', function() {
@@ -23,13 +23,13 @@ describeMixin('app/ui/mixin_example', function () {
       setupComponent(fixture, {
         barSelector: '.js-bar'
       });
-      expect(this.component.$node.find('.js-bar').length).toBe(1);
+      expect(this.component.$node.filter('.js-bar').length).toBe(1);
     });
 
     it('test negative result', function() {
       var fixture = '<div class="js-foo" />';
       setupComponent(fixture);
-      expect(this.component.$node.find('.js-bar').length).toBe(0);
+      expect(this.component.$node.filter('.js-bar').length).toBe(0);
     });
   });
 });
