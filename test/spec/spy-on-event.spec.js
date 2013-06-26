@@ -59,4 +59,19 @@ define(function (require) {
     });
 
   });
+
+  describe('event matchers', function() {
+    beforeEach(function() {
+      this.spy = spyOnEvent(document, 'test-event');
+      $(document).trigger('test-event', {test: true});
+    });
+
+    it('matches with toHaveBeenTriggeredOn', function() {
+      expect(this.spy).toHaveBeenTriggeredOn(document);
+    });
+
+    it('matches with toHaveBeenTriggeredOnAndWith', function() {
+      expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test: true});
+    });
+  });
 });
