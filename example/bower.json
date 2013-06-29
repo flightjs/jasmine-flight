@@ -1,7 +1,0 @@
-{
-  "name": "flight-jasmine-example",
-  "version": "0.0.1",
-  "dependencies": {
-    "flight": "~1.0.7"
-  }
-}
