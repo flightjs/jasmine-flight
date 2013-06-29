@@ -1,10 +1,22 @@
 {
   "name": "flight-jasmine",
   "version": "1.0.0",
+  "description": "Extensions to the Jasmine test framework for use with Flight",
   "main": "lib/flight-jasmine.js",
+  "keywords": [
+    "flight",
+    "jasmine",
+    "test"
+  ],
   "ignore": [
-    "example",
+    ".*",
+    "test",
+    "package.json",
+    "karma.conf.js",
     "CONTRIBUTING.md",
-    ".travis.yml"
-  ]
+    "CHANGELOG.md"
+  ],
+  "devDependencies": {
+    "flight": "~1.0.9"
+  }
 }
