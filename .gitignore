@@ -1,5 +1,2 @@
-*.log
-example/bower_components
-example/node_modules
-example/_SpecRunner.html
-example/.grunt
+components
+node_modules
