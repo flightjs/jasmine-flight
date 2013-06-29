@@ -1,5 +1,4 @@
-flight-jasmine [![Build Status](https://travis-ci.org/twitter/flight-jasmine.png?branch=master)](http://travis-ci.org/twitter/flight-jasmine)
-==============
+# flight-jasmine [![Build Status](https://travis-ci.org/twitter/flight-jasmine.png?branch=master)](http://travis-ci.org/twitter/flight-jasmine)
 
 Extensions to the Jasmine test framework for use with [Flight](https://github.com/twitter/flight)
 
@@ -8,7 +7,7 @@ Extensions to the Jasmine test framework for use with [Flight](https://github.co
 Include [flight-jasmine.js](https://raw.github.com/twitter/flight-jasmine/master/lib/flight-jasmine.js)
 in your app and load it in your test runner.
 
-Or install it with [Bower](https://github.com/twitter/bower):
+Or install it with [Bower](http://bower.io/):
 
 ```bash
 bower install --save-dev flight-jasmine
@@ -22,7 +21,9 @@ bower install --save-dev flight-jasmine
 
 ```javascript
 describeComponent('path/to/component', function () {
-  beforeEach(setupComponent);
+  beforeEach(function () {
+    setupComponent();
+  });
 
   it('should do x', function () {
     // a component instance is now accessible as this.component
@@ -37,7 +38,9 @@ describeComponent('path/to/component', function () {
 ```javascript
 describeMixin('path/to/mixin', function () {
   // initialize the component and attach it to the DOM
-  beforeEach(setupComponent);
+  beforeEach(function () {
+    setupComponent();
+  });
 
   it('should do x', function () {
     expect(this.component.doSomething()).toBe(expected);
@@ -49,17 +52,18 @@ describeMixin('path/to/mixin', function () {
 
 ```javascript
 describeComponent('data/twitter_profile', function () {
-  beforeEach(setupComponent);
+  beforeEach(function () {
+    setupComponent();
+  });
 
   describe('listens for uiNeedsTwitterUserId', function () {
-
     // was the event triggered?
     it('and triggers dataTwitterUserId', function () {
       var eventSpy = spyOnEvent(document, 'dataTwitterProfile');
       $(document).trigger('uiNeedsTwitterUserId', {
         screen_name: 'tbrd'
       });
-    expect(eventSpy).toHaveBeenTriggeredOn(document);
+      expect(eventSpy).toHaveBeenTriggeredOn(document);
     });
 
     // is the user id correct?
@@ -106,7 +110,7 @@ describeComponent('data/twitter_profile', function () {
     setupComponent({
       baseUrl: 'http://twitter.com/1.1/'
     });
-  expect(this.component.attr.baseUrl).toBe('http://twitter.com/1.1/');
+    expect(this.component.attr.baseUrl).toBe('http://twitter.com/1.1/');
   });
 });
 ```
@@ -114,14 +118,6 @@ describeComponent('data/twitter_profile', function () {
 # Teardown
 
 Components are automatically torn down after each test.
-
-# Why flight-jasmine?
-
-Flight components are defined by their interface: the events they trigger and handle, and how they interact with the DOM. They are also highly independent, with no reliance on other components. These two factors allow them to be rigourously and exhaustively tested.
-
-However, Flight does not expose component instances so testing them can be tricky. Also, out-of-the-box Jasmine does not support testing of jQuery Events.
-
-flight-jasmine provides the developer with simple methods for setting up, exposing and tearing down component instances, and for testing whether expected events are triggered.
 
 ## Contributing to this project
 
@@ -134,12 +130,13 @@ review the [guidelines for contributing](CONTRIBUTING.md).
 
 ## Authors
 
-+ [@tbrd](http://github.com/tbrd)
+* [@tbrd](http://github.com/tbrd)
 
 ## Thanks
 
-+ [@esbie](http://github.com/esbie) and [@skilldrick](http://github.com/skilldrick) for creating the original `describeComponent` & `describeMixin` methods
-+ [@necolas] (http://github.com/necolas) for CONTRIBUTING.md
+* [@esbie](http://github.com/esbie) and
+  [@skilldrick](http://github.com/skilldrick) for creating the original
+  `describeComponent` & `describeMixin` methods.
 
 ## License
 
