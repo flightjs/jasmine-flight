@@ -1,5 +1,6 @@
 === HEAD
 
+* Rename to 'jasmine-flight'.
 * Fix `this.component` and `this.$node` checks.
 * Switch to using Karma test runner.
 

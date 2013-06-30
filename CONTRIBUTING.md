@@ -95,11 +95,11 @@ included in the project:
 
    ```
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/flight-jasmine
+   git clone https://github.com/<your-username>/jasmine-flight
    # Navigate to the newly cloned directory
-   cd flight-jasmine
+   cd jasmine-flight
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/twitter/flight-jasmine
+   git remote add upstream https://github.com/flightjs/jasmine-flight
    ```
 
 2. You will need to have Node and npm. Install Bower and Karma as global dependencies:

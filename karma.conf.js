@@ -14,7 +14,7 @@ files = [
   REQUIRE,
   REQUIRE_ADAPTER,
 
-  'lib/flight-jasmine.js',
+  'lib/jasmine-flight.js',
 
   {pattern: 'bower_components/flight/**/*.js', included: false},
   {pattern: 'test/mock/*.js', included: false},

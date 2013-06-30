@@ -1,19 +1,19 @@
-# flight-jasmine [![Build Status](https://travis-ci.org/twitter/flight-jasmine.png?branch=master)](http://travis-ci.org/twitter/flight-jasmine)
+# jasmine-flight [![Build Status](https://travis-ci.org/flightjs/jasmine-flight.png?branch=master)](http://travis-ci.org/flightjs/jasmine-flight)
 
-Extensions to the Jasmine test framework for use with [Flight](https://github.com/twitter/flight)
+Extensions to the Jasmine test framework for use with [Flight](https://github.com/flightjs/flight)
 
 # Getting started
 
-Include [flight-jasmine.js](https://raw.github.com/twitter/flight-jasmine/master/lib/flight-jasmine.js)
+Include [jasmine-flight.js](https://raw.github.com/flightjs/jasmine-flight/master/lib/jasmine-flight.js)
 in your app and load it in your test runner.
 
 Or install it with [Bower](http://bower.io/):
 
 ```bash
-bower install --save-dev flight-jasmine
+bower install --save-dev jasmine-flight
 ```
 
-**N.B.** flight-jasmine depends on
+**N.B.** jasmine-flight depends on
 [jasmine](https://github.com/pivotal/jasmine) and
 [jasmine-jquery](https://github.com/velesin/jasmine-jquery)
 
