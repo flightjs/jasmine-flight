@@ -5,9 +5,9 @@ basePath = '';
 
 // list of files / patterns to load in the browser
 files = [
-  'components/es5-shim/es5-shim.js',
-  'components/es5-shim/es5-sham.js',
-  'components/jquery/jquery.js',
+  'bower_components/es5-shim/es5-shim.js',
+  'bower_components/es5-shim/es5-sham.js',
+  'bower_components/jquery/jquery.js',
 
   JASMINE,
   JASMINE_ADAPTER,
@@ -16,7 +16,7 @@ files = [
 
   'lib/flight-jasmine.js',
 
-  {pattern: 'components/flight/**/*.js', included: false},
+  {pattern: 'bower_components/flight/**/*.js', included: false},
   {pattern: 'test/mock/*.js', included: false},
   {pattern: 'test/spec/*.js', included: false},
 
