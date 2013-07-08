@@ -1,5 +1,7 @@
 === HEAD
 
+=== 1.1.0 (July 8, 2013)
+
 * Rename to 'jasmine-flight'.
 * Fix `this.component` and `this.$node` checks.
 * Switch to using Karma test runner.
