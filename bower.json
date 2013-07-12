@@ -17,6 +17,7 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "flight": "~1.0.9"
+    "flight": "~1.0.9",
+    "jasmine-jquery": "~1.5.2"
   }
 }
