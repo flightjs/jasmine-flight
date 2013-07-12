@@ -25,6 +25,7 @@ a path to the flight directory. E.g.:
             flight: 'bower_components/flight'
         }
     });
+```
 
 ## Components
 
@@ -146,6 +147,7 @@ review the [guidelines for contributing](CONTRIBUTING.md).
 * [@esbie](http://github.com/esbie) and
   [@skilldrick](http://github.com/skilldrick) for creating the original
   `describeComponent` & `describeMixin` methods.
+* [@necolas](http://github.com/necolas) for ongoing support & development
 
 ## License
 
