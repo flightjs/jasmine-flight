@@ -57,7 +57,7 @@ define(function (require) {
   describe('event matchers', function () {
     beforeEach(function () {
       this.spy = spyOnEvent(document, 'test-event');
-      $(document).trigger('test-event', {test: true});
+      $(document).trigger('test-event', {test: true, test2: null});
     });
 
     it('matches with toHaveBeenTriggeredOn', function () {
@@ -65,7 +65,12 @@ define(function (require) {
     });
 
     it('matches with toHaveBeenTriggeredOnAndWith', function () {
-      expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test: true});
+      expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test: true, test2: null});
+    });
+
+    it('matches with data subset when nonexact flag is set', function () {
+      expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test: true}, true);
+      expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test2: null}, true);
     });
   });
 });
