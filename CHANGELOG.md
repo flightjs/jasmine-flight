@@ -1,4 +1,4 @@
-=== HEAD
+=== 2.0.0 (July 24, 2013)
 
 * Fix null values causing validateHash to fail.
 * Fix setupComponent unnecessarily wrapping fixtures in a `div`.
