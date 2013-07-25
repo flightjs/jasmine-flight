@@ -37,8 +37,8 @@ define(function (require) {
       var $node = $('<div />');
       var spy = spyOnEvent($node, 'test-event');
 
-      $(document).append($node);
-      $(document).trigger('test-event');
+      $(document.body).append($node);
+      $(document.body).trigger('test-event');
 
       // spy should not have been called
       expect(spy.callCount).toBe(0);
