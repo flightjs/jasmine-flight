@@ -1,10 +1,14 @@
+=== HEAD
+
+* Add support for testing with Flight 1.1.0.
+
 === 2.0.0 (July 24, 2013)
 
 * Fix null values causing validateHash to fail.
 * Fix setupComponent unnecessarily wrapping fixtures in a `div`.
 * Fix `toBeTriggeredOnAndWith`.
 
-=== 1.1.1. (July 12, 2013)
+=== 1.1.1 (July 12, 2013)
 
 * Cleanup event spies after each test.
 * Add tests for spyOnEvent.
