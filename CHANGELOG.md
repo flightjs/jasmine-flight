@@ -1,5 +1,7 @@
 === HEAD
 
+=== 2.1.0 (July 27, 2013)
+
 * Add support for testing with Flight 1.1.0.
 
 === 2.0.0 (July 24, 2013)
