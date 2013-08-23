@@ -1,52 +1,63 @@
 // Karma configuration file
+//
+// For all available config options and default values, see:
+// https://github.com/karma-runner/karma/blob/stable/lib/config.js#L54
 
-// base path, that will be used to resolve files and exclude
-basePath = '';
+module.exports = function (config) {
+  'use strict';
 
-// list of files / patterns to load in the browser
-files = [
-  'bower_components/es5-shim/es5-shim.js',
-  'bower_components/es5-shim/es5-sham.js',
-  'bower_components/jquery/jquery.js',
+  config.set({
+    // base path, that will be used to resolve files and exclude
+    basePath: '',
 
-  JASMINE,
-  JASMINE_ADAPTER,
-  REQUIRE,
-  REQUIRE_ADAPTER,
+    frameworks: ['jasmine'],
 
-  'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
-  'lib/jasmine-flight.js',
+    // list of files / patterns to load in the browser
+    files: [
+      'bower_components/es5-shim/es5-shim.js',
+      'bower_components/es5-shim/es5-sham.js',
+      'bower_components/jquery/jquery.js',
 
-  {pattern: 'bower_components/flight/**/*.js', included: false},
-  {pattern: 'test/mock/*.js', included: false},
-  {pattern: 'test/spec/*.js', included: false},
+      'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
+      'lib/jasmine-flight.js',
 
-  'test/test-main.js'
-];
+      // hack to load RequireJS after the shim libs
+      'node_modules/karma-requirejs/lib/require.js',
+      'node_modules/karma-requirejs/lib/adapter.js',
 
-// use dots reporter, as travis terminal does not support escaping sequences
-// possible values: 'dots', 'progress', 'junit', 'teamcity'
-// CLI --reporters progress
-reporters = ['dots'];
+      {pattern: 'bower_components/flight/**/*.js', included: false},
+      {pattern: 'test/mock/*.js', included: false},
+      {pattern: 'test/spec/*.js', included: false},
 
-// web server port
-// CLI --port 9876
-port = 9876;
+      'test/test-main.js'
+    ],
 
-// cli runner port
-// CLI --runner-port 9100
-runnerPort = 9100;
+    // use dots reporter, as travis terminal does not support escaping sequences
+    // possible values: 'dots', 'progress', 'junit', 'teamcity'
+    // CLI --reporters progress
+    reporters: ['dots'],
 
-// enable / disable watching file and executing tests whenever any file changes
-// CLI --auto-watch --no-auto-watch
-autoWatch = true;
+    // enable / disable watching file and executing tests whenever any file changes
+    // CLI --auto-watch --no-auto-watch
+    autoWatch: true,
 
-// start these browsers
-browsers = [
-    'Chrome',
-    'Firefox'
-];
+    // start these browsers
+    browsers: [
+      'Chrome',
+      'Firefox'
+    ],
 
-// Auto run tests on start (when browsers are captured) and exit
-// CLI --single-run --no-single-run
-singleRun = false;
+    // Auto run tests on start (when browsers are captured) and exit
+    // CLI --single-run --no-single-run
+    singleRun: false,
+
+    plugins: [
+      'karma-jasmine',
+      'karma-requirejs',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-ie-launcher',
+      'karma-safari-launcher'
+    ]
+  });
+};
