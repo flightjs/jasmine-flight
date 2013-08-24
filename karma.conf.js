@@ -1,52 +1,58 @@
-// Karma configuration file
+module.exports = function(config) {
+  config.set({
+    // Karma configuration file
 
-// base path, that will be used to resolve files and exclude
-basePath = '';
+    // base path, that will be used to resolve files and exclude
+    basePath: '',
 
-// list of files / patterns to load in the browser
-files = [
-  'bower_components/es5-shim/es5-shim.js',
-  'bower_components/es5-shim/es5-sham.js',
-  'bower_components/jquery/jquery.js',
+    frameworks: ['jasmine'],
 
-  JASMINE,
-  JASMINE_ADAPTER,
-  REQUIRE,
-  REQUIRE_ADAPTER,
+    // list of files / patterns to load in the browser
+    files: [
+      'bower_components/es5-shim/es5-shim.js',
+      'bower_components/es5-shim/es5-sham.js',
+      'bower_components/jquery/jquery.js',
 
-  'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
-  'lib/jasmine-flight.js',
+      'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
+      'lib/jasmine-flight.js',
 
-  {pattern: 'bower_components/flight/**/*.js', included: false},
-  {pattern: 'test/mock/*.js', included: false},
-  {pattern: 'test/spec/*.js', included: false},
+      // hack to load RequireJS after the shim libs
+      'node_modules/karma-requirejs/lib/require.js',
+      'node_modules/karma-requirejs/lib/adapter.js',
 
-  'test/test-main.js'
-];
+      {pattern: 'bower_components/flight/**/*.js', included: false},
+      {pattern: 'test/mock/*.js', included: false},
+      {pattern: 'test/spec/*.js', included: false},
 
-// use dots reporter, as travis terminal does not support escaping sequences
-// possible values: 'dots', 'progress', 'junit', 'teamcity'
-// CLI --reporters progress
-reporters = ['dots'];
+      'test/test-main.js'
+    ],
 
-// web server port
-// CLI --port 9876
-port = 9876;
+    // use dots reporter, as travis terminal does not support escaping sequences
+    // possible values: 'dots', 'progress', 'junit', 'teamcity'
+    // CLI --reporters progress
+    reporters: ['dots'],
 
-// cli runner port
-// CLI --runner-port 9100
-runnerPort = 9100;
+    // enable / disable watching file and executing tests whenever any file changes
+    // CLI --auto-watch --no-auto-watch
+    autoWatch: true,
 
-// enable / disable watching file and executing tests whenever any file changes
-// CLI --auto-watch --no-auto-watch
-autoWatch = true;
+    // start these browsers
+    browsers: [
+        'Chrome',
+        'Firefox'
+    ],
 
-// start these browsers
-browsers = [
-    'Chrome',
-    'Firefox'
-];
+    // Auto run tests on start (when browsers are captured) and exit
+    // CLI --single-run --no-single-run
+    singleRun: false,
 
-// Auto run tests on start (when browsers are captured) and exit
-// CLI --single-run --no-single-run
-singleRun = false;
+    plugins: [
+      'karma-jasmine',
+      'karma-requirejs',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-ie-launcher',
+      'karma-safari-launcher'
+    ]
+  });
+}
