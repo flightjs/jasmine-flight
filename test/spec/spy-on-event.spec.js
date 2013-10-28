@@ -68,9 +68,14 @@ define(function (require) {
       expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test: true, test2: null});
     });
 
-    it('matches with data subset when nonexact flag is set', function () {
+    it('matches with data subset when fuzzy flag is set', function () {
       expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test: true}, true);
       expect(this.spy).toHaveBeenTriggeredOnAndWith(document, {test2: null}, true);
+    });
+
+    it('matches with data subset when using fuzzy shortcut', function () {
+      expect(this.spy).toHaveBeenTriggeredOnAndWithFuzzy(document, {test: true});
+      expect(this.spy).toHaveBeenTriggeredOnAndWithFuzzy(document, {test2: null});
     });
   });
 });
