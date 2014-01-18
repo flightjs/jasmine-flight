@@ -1,6 +1,6 @@
 {
   "name": "jasmine-flight",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Extensions to the Jasmine test framework for use with Flight",
   "main": "lib/jasmine-flight.js",
   "dependencies": {

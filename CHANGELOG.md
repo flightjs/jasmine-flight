@@ -1,5 +1,7 @@
 === HEAD
 
+=== 2.2.0 (January 17, 2014)
+
 * Update to 'jasmine-jquery' 1.7.x.
 
 === 2.1.0 (July 27, 2013)
