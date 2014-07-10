@@ -14,13 +14,13 @@ define(function (require) {
     });
 
     describe('this.component', function () {
-      it('should be null if setupComponent() isn\'t called', function () {
+      it('should be null if this.setupComponent() isn\'t called', function () {
         expect(this.component).toBeNull();
       });
 
-      it('should be an instance of Example, if setupComponent() is called', function () {
+      it('should be an instance of Example, if this.setupComponent() is called', function () {
         // waitsFor
-        setupComponent();
+        this.setupComponent();
         expect(this.component instanceof Example).toBe(true);
       });
 
@@ -33,7 +33,7 @@ define(function (require) {
       var result = [];
 
       beforeEach(function () {
-        spyOn(defineComponent, 'teardownAll').andCallFake(function () {
+        spyOn(defineComponent, 'teardownAll').and.callFake(function () {
           result.push('call');
         });
       });
@@ -61,16 +61,16 @@ define(function (require) {
       var result = [];
 
       beforeEach(function () {
-        spyOn(this.Component.prototype, 'teardown').andCallFake(function () {
+        spyOn(this.Component.prototype, 'teardown').and.callFake(function () {
           result.push('call');
         });
       });
 
-      it('should automatically call before setupComponent() if component exists', function () {
+      it('should automatically call before this.setupComponent() if component exists', function () {
         expect(this.component).toBeNull();
-        setupComponent();
+        this.setupComponent();
         expect(result.length).toEqual(0);
-        setupComponent();
+        this.setupComponent();
         expect(result.length).toEqual(1);
       });
 
@@ -79,26 +79,26 @@ define(function (require) {
       });
     });
 
-    describe('setupComponent()', function () {
+    describe('this.setupComponent()', function () {
       it('provides the correct $node attribute', function () {
         expect(this.$node).toBeNull();
-        setupComponent();
+        this.setupComponent();
         expect(this.$node instanceof jQuery).toBe(true);
         expect(this.$node).toHaveClass('component-root');
       });
 
       it('sets the fixture if string given to first argument', function () {
-        setupComponent('<div id="test_fixture1"/>');
+        this.setupComponent('<div id="test_fixture1"/>');
         expect(this.$node).toHaveId('test_fixture1');
       });
 
       it('adds component-root class to fixture root', function () {
-        setupComponent('<div id="test_fixture1"/>');
+        this.setupComponent('<div id="test_fixture1"/>');
         expect(this.$node).toHaveClass('component-root');
       });
 
       it('sets the fixture if jQuery object given to first argument', function () {
-        setupComponent($('<div id="test_fixture2"/>'));
+        this.setupComponent($('<div id="test_fixture2"/>'));
         expect(this.$node).toHaveId('test_fixture2');
       });
 
@@ -108,16 +108,16 @@ define(function (require) {
       });
 
       it('passes options to component if object givent to first argument', function () {
-        setupComponent();
+        this.setupComponent();
         expect(this.component.attr.param).toEqual('defaultParam');
-        setupComponent({
+        this.setupComponent({
           param: 'testParam'
         });
         expect(this.component.attr.param).toEqual('testParam');
       });
 
       it('sets the fixture and passed options to component if both arguments given', function () {
-        setupComponent('<div id="test_fixture_both"/>', {
+        this.setupComponent('<div id="test_fixture_both"/>', {
           param: 'testFixtureParam'
         });
         expect(this.component.attr.param).toEqual('testFixtureParam');
@@ -125,20 +125,20 @@ define(function (require) {
       });
 
       it('resets a fixture if multiple calls', function () {
-        setupComponent('<div id="fixture1"/>');
+        this.setupComponent('<div id="fixture1"/>');
         expect(this.$node).toHaveId('fixture1');
 
-        setupComponent('<div id="fixture2"/>');
+        this.setupComponent('<div id="fixture2"/>');
         expect(this.$node).toHaveId('fixture2');
       });
 
       it('calls this.component.teardown() if multiple calls', function () {
         spyOn(this.Component.prototype, 'teardown');
         try {
-          setupComponent();
-          expect(this.component.teardown.calls.length).toEqual(0);
-          setupComponent();
-          expect(this.component.teardown.calls.length).toEqual(1);
+          this.setupComponent();
+          expect(this.component.teardown.calls.count()).toEqual(0);
+          this.setupComponent();
+          expect(this.component.teardown.calls.count()).toEqual(1);
         } catch (e) {
 
         }
