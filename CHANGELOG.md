@@ -1,10 +1,5 @@
 === HEAD
 
-=== 3.0.0 (July 10, 2014)
-
-* Update to jasmine-jquery 2.0.0
-* Supports Jasmine 2.0
-
 === 2.2.0 (January 17, 2014)
 
 * Update to 'jasmine-jquery' 1.7.x.
