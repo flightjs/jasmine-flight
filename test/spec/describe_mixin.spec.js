@@ -6,29 +6,7 @@ define(function (require) {
   var defineComponent = require('flight/lib/component');
   var Example = require('mock/example');
 
-  describeComponent('mock/example', function () {
-    describe('this.Component', function () {
-      it('should be an Example component', function () {
-        expect(this.Component).toEqual(Example);
-      });
-    });
-
-    describe('this.component', function () {
-      it('should be null if this.setupComponent() isn\'t called', function () {
-        expect(this.component).toBeNull();
-      });
-
-      it('should be an instance of Example, if this.setupComponent() is called', function () {
-        // waitsFor
-        this.setupComponent();
-        expect(this.component instanceof Example).toBe(true);
-      });
-
-      it('should reset `this.component` in a new context', function () {
-        expect(this.component).toBeNull();
-      });
-    });
-
+  describeMixin('mock/example_mixin', function () {
     describe('defineComponent.teardownAll()', function () {
       var result = [];
 

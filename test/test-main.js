@@ -4,7 +4,7 @@ var tests = Object.keys(window.__karma__.files).filter(function (file) {
   return (/\.spec\.js$/.test(file));
 });
 
-requirejs.config({
+require.config({
   // Karma serves files from '/base'
   baseUrl: '/base',
 
