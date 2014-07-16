@@ -1,5 +1,12 @@
 === HEAD
 
+=== 3.0.0 (July 16, 2014)
+
+* Update to "jasmine-jquery": 2.0.0
+* Update to "flight": 1.2.0
+* Support Jasmine 2.0
+* Removed support for Node v0.8
+
 === 2.2.0 (January 17, 2014)
 
 * Update to 'jasmine-jquery' 1.7.x.
