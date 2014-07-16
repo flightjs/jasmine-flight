@@ -1,6 +1,6 @@
 {
   "name": "jasmine-flight",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "devDependencies": {
     "karma": "~0.12.6",
     "karma-cli": "~0.0.4",
