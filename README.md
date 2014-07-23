@@ -2,12 +2,11 @@
 
 Extensions to the Jasmine test framework for use with [Flight](https://github.com/flightjs/flight)
 
-# Getting started
+# Installation
 
-Include [jasmine-flight.js](https://raw.github.com/flightjs/jasmine-flight/master/lib/jasmine-flight.js)
-in your app and load it in your test runner.
-
-Or install it with [Bower](http://bower.io/):
+```bash
+npm install --save-dev jasmine-flight
+```
 
 ```bash
 bower install --save-dev jasmine-flight
@@ -17,16 +16,8 @@ bower install --save-dev jasmine-flight
 [jasmine](https://github.com/pivotal/jasmine) and
 [jasmine-jquery](https://github.com/velesin/jasmine-jquery)
 
-jasmine-flight assumes you'll be using RequireJS to load Flight modules, and
-that you've configured the Flight directory path. For example:
-
-```javascript
-requirejs.config({
-  paths: {
-    flight: 'bower_components/flight'
-  }
-});
-```
+`jasmine-flight` assumes you'll be loading Flight modules with a module loader
+than implements `require`.
 
 ## Components
 
