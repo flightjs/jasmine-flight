@@ -3,8 +3,11 @@
  * Licensed under the MIT License
  */
 
-(function (root) {
+
+(function (root, jasmine) {
   'use strict';
+
+  var flight = require('flightjs');
 
   jasmine.flight = {};
 
@@ -49,13 +52,9 @@
           this.component = (new this.Component()).initialize(this.$node, options);
         };
 
-        var requireCallback = function (registry, Component) {
-          registry.reset();
-          this.Component = Component;
-          done();
-        }.bind(this);
-
-        require(['flight/lib/registry', componentPath], requireCallback);
+        flight.registry.reset();
+        this.Component = require(componentPath);
+        done();
       });
 
       afterEach(function (done) {
@@ -64,17 +63,14 @@
           this.$node = null;
         }
 
-        var requireCallback = function (defineComponent) {
-          if (this.component) {
-            this.component = null;
-          }
 
-          this.Component = null;
-          defineComponent.teardownAll();
-          done();
-        }.bind(this);
+        if (this.component) {
+          this.component = null;
+        }
 
-        require(['flight/lib/component'], requireCallback);
+        this.Component = null;
+        require('flightjs').component.teardownAll();
+        done();
       });
 
       specDefinitions.apply(this);
@@ -130,13 +126,9 @@
           this.component = (new this.Component()).initialize(this.$node, options);
         };
 
-        var requireCallback = function (registry, defineComponent, Mixin) {
-          registry.reset();
-          this.Component = defineComponent(function () {}, Mixin);
-          done();
-        }.bind(this);
-
-        require(['flight/lib/registry', 'flight/lib/component', mixinPath], requireCallback);
+        flight.registry.reset();
+        this.Component = flight.component(function () {}, require(mixinPath));
+        done();
       });
 
       afterEach(function (done) {
@@ -145,17 +137,13 @@
           this.$node = null;
         }
 
-        var requireCallback = function (defineComponent) {
-          if (this.component) {
-            this.component = null;
-          }
+        if (this.component) {
+          this.component = null;
+        }
 
-          this.Component = null;
-          defineComponent.teardownAll();
-          done();
-        }.bind(this);
-
-        require(['flight/lib/component'], requireCallback);
+        this.Component = null;
+        flight.component.teardownAll();
+        done();
       });
 
       specDefinitions.apply(this);
@@ -186,12 +174,8 @@
       beforeEach(function (done) {
         this.module = null;
 
-        var requireCallback = function (module) {
-          this.module = module;
-          done();
-        }.bind(this);
-
-        require([modulePath], requireCallback);
+        this.module = require(modulePath);
+        done();
       });
 
       specDefinitions.apply(this);
@@ -363,7 +347,7 @@
         pass: wasTriggeredWithData
       };
 
-      result.message = function () {
+      result.message = (function () {
         var $pp = function (obj) {
           var description;
           var attr;
@@ -397,7 +381,7 @@
             'Expected event ' + eventName + ' not to have been triggered on ' + $pp(selector)
           ];
         }
-      }();
+      }());
 
       return result;
 
@@ -415,7 +399,7 @@
               pass: wasTriggered
             };
 
-            result.message = function () {
+            result.message = (function () {
               var $pp = function (obj) {
                 var description;
                 var attr;
@@ -448,7 +432,7 @@
                   'Expected event ' + eventName + ' not to have been triggered on ' + $pp(selector)
                 ];
               }
-            }();
+            }());
 
             return result;
           }
@@ -505,4 +489,4 @@
     jasmine.flight.events.cleanUp();
   });
 
-}(this));
+}(this, this.jasmine));
