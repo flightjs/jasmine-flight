@@ -33,7 +33,7 @@ requirejs.config({
 ```javascript
 describeComponent('path/to/component', function () {
   beforeEach(function () {
-    setupComponent();
+    this.setupComponent();
   });
 
   it('should do x', function () {
@@ -50,7 +50,7 @@ describeComponent('path/to/component', function () {
 describeMixin('path/to/mixin', function () {
   // initialize the component and attach it to the DOM
   beforeEach(function () {
-    setupComponent();
+    this.setupComponent();
   });
 
   it('should do x', function () {
@@ -64,7 +64,7 @@ describeMixin('path/to/mixin', function () {
 ```javascript
 describeComponent('data/twitter_profile', function () {
   beforeEach(function () {
-    setupComponent();
+    this.setupComponent();
   });
 
   describe('listens for uiNeedsTwitterUserId', function () {
@@ -92,13 +92,13 @@ describeComponent('data/twitter_profile', function () {
 });
 ```
 
-## setupComponent
+## this.setupComponent
 
 ```javascript
-setupComponent(optionalFixture, optionalOptions);
+this.setupComponent(optionalFixture, optionalOptions);
 ```
 
-Calling `setupComponent` twice will create an instance, tear it down and create a new one.
+Calling `this.setupComponent` twice will create an instance, tear it down and create a new one.
 
 ### HTML Fixtures
 
@@ -106,7 +106,7 @@ Calling `setupComponent` twice will create an instance, tear it down and create 
 describeComponent('ui/twitter_profile', function () {
   // is the component attached to the fixture?
   it('this.component.$node has class "foo"', function () {
-    setupComponent('<span class="foo">Test</span>');
+    this.setupComponent('<span class="foo">Test</span>');
     expect(this.component.$node).toHaveClass('foo');
   });
 });
@@ -118,7 +118,7 @@ describeComponent('ui/twitter_profile', function () {
 describeComponent('data/twitter_profile', function () {
   // is the option set correctly?
   it('this.component.attr.baseUrl is set', function () {
-    setupComponent({
+    this.setupComponent({
       baseUrl: 'http://twitter.com/1.1/'
     });
     expect(this.component.attr.baseUrl).toBe('http://twitter.com/1.1/');
