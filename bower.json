@@ -7,7 +7,7 @@
     "jasmine-jquery": "~2.0.0"
   },
   "devDependencies": {
-    "flight": "~1.2.0"
+    "flight": ">=1.2.0"
   },
   "keywords": [
     "flight",

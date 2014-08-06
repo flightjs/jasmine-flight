@@ -1,6 +1,10 @@
 {
   "name": "jasmine-flight",
   "version": "3.0.0",
+  "main": "lib/jasmine-flight.js",
+  "files": [
+    "lib/jasmine-flight.js"
+  ],
   "devDependencies": {
     "karma": "~0.12.6",
     "karma-cli": "~0.0.4",
@@ -11,7 +15,8 @@
     "karma-firefox-launcher": "~0.1.3"
   },
   "scripts": {
-    "test": "./node_modules/.bin/karma start --browsers Firefox --single-run"
+    "test": "karma start --single-run",
+    "watch": "karma start"
   },
   "repository": {
     "type": "git",
