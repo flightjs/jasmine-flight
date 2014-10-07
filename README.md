@@ -130,6 +130,17 @@ describeComponent('data/twitter_profile', function () {
 
 Components are automatically torn down after each test.
 
+## Webpack Compatibility
+
+If using [webpack](http://webpack.github.io/) instead of RequireJS, you need to pass the
+result of requiring your component as the first parameter of `describeComponent`, `describeMixin`, or `describeModule`.
+
+```javascript
+describeComponent(require('path/to/component'), function () {
+  // Everything else is the same as RequireJS behaviour
+});
+```
+
 ## Contributing to this project
 
 Anyone and everyone is welcome to contribute. Please take a moment to
