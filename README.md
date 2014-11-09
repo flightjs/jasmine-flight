@@ -59,39 +59,6 @@ describeMixin('path/to/mixin', function () {
 });
 ```
 
-## Event spy
-
-```javascript
-describeComponent('data/twitter_profile', function () {
-  beforeEach(function () {
-    this.setupComponent();
-  });
-
-  describe('listens for uiNeedsTwitterUserId', function () {
-    // was the event triggered?
-    it('and triggers dataTwitterUserId', function () {
-      var eventSpy = spyOnEvent(document, 'dataTwitterProfile');
-      $(document).trigger('uiNeedsTwitterUserId', {
-        screen_name: 'tbrd'
-      });
-      expect(eventSpy).toHaveBeenTriggeredOn(document);
-    });
-
-    // is the user id correct?
-    it('and has correct id', function () {
-      var eventSpy = spyOnEvent(document, 'dataTwitterUserId');
-      $(document).trigger('uiNeedsTwitteruserId', {
-        screen_name: 'tbrd'
-      });
-      expect(eventSpy.mostRecentCall.data).toEqual({
-        screen_name: 'tbrd',
-        id: 4149861
-      });
-    });
-  });
-});
-```
-
 ## this.setupComponent
 
 ```javascript
