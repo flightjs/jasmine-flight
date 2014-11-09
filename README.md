@@ -110,7 +110,7 @@ As per describeModule, but prevents execution of any other specs.
 Instantiate a component or mixin within specDefinitions.
 
 * The component instance is available at `this.component`
-* The
+* The node the component is attached to is `this.$node`
 
 #### `fixture`: String | jQuery
 
@@ -186,6 +186,7 @@ describeComponent('ui/text', function () {
     expect(spy).toHaveBeenCalled();
   });
 });
+```
 
 ### Spying on events
 
@@ -203,6 +204,7 @@ describeComponent('ui/text', function () {
     });
   });
 });
+```
 
 ## Contributing to this project
 
