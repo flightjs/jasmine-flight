@@ -42,6 +42,8 @@ describeComponent('path/to/component', function () {
 });
 ```
 
+Also provides ddescribeComponent.
+
 ## Mixins
 
 ```javascript
@@ -56,6 +58,25 @@ describeMixin('path/to/mixin', function () {
   });
 });
 ```
+
+Also provides ddescribeMixin.
+
+## Modules
+
+```javascript
+describeModule('path/to/module', function () {
+  // initialize the component and attach it to the DOM
+  beforeEach(function () {
+    this.setupComponent();
+  });
+
+  it('should do x', function () {
+    expect(this.component.doSomething()).toBe(expected);
+  });
+});
+```
+
+Also provides ddescribeModule.
 
 ## this.setupComponent
 
