@@ -13,9 +13,7 @@ Or install it with [Bower](http://bower.io/):
 bower install --save-dev jasmine-flight
 ```
 
-**N.B.** jasmine-flight depends on
-[jasmine](https://github.com/pivotal/jasmine) and
-[jasmine-jquery](https://github.com/velesin/jasmine-jquery)
+jasmine-flight depends on [jasmine](https://github.com/pivotal/jasmine)
 
 jasmine-flight assumes you'll be using RequireJS to load Flight modules, and
 that you've configured the Flight directory path. For example:
