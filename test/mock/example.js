@@ -4,7 +4,7 @@ define(function (require) {
   var defineComponent = require('flight/lib/component');
 
   function Example() {
-    this.defaultAttrs({
+    this.attributes({
       param: 'defaultParam'
     });
   }

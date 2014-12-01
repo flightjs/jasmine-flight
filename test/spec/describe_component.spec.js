@@ -3,10 +3,14 @@
 define(function (require) {
   'use strict';
 
+  // we can't assume a shared instance across require() calls in webpack
+  var isWebpack = (typeof require.include === 'function');
+
   var defineComponent = require('flight/lib/component');
   var Example = require('mock/example');
+  var component = isWebpack ? Example : 'mock/example';
 
-  describeComponent('mock/example', function () {
+  describeComponent(component, function () {
     describe('this.Component', function () {
       it('should be an Example component', function () {
         expect(this.Component).toEqual(Example);

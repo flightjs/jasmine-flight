@@ -1,6 +1,6 @@
 define(function () {
     return function Mixin() {
-        this.defaultAttrs({
+        this.attributes({
           param: 'defaultParam'
         });
     }

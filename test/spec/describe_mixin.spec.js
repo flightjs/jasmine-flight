@@ -4,9 +4,9 @@ define(function (require) {
   'use strict';
 
   var defineComponent = require('flight/lib/component');
-  var Example = require('mock/example');
+  var mixin = (typeof require.include === 'function') ? require('mock/example_mixin') : 'mock/example_mixin';
 
-  describeMixin('mock/example_mixin', function () {
+  describeMixin(mixin, function () {
     describe('defineComponent.teardownAll()', function () {
       var result = [];
 
