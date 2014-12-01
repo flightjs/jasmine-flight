@@ -32,16 +32,22 @@ jasmine-flight provides a set of helpers to load and instantiate AMD components,
 
 ## describe helpers
 
-### describeComponent(componentPath, specDefinitions)
+### describeComponent(componentReference, specDefinitions)
 
-Requires the component at componentPath and executes specDefinitions.
+Requires the component at componentReference and executes specDefinitions.
 
 * The component constructor is available from within specDefinitions as `this.Component`
 * To create a component instance, call `this.setupComponent`
 
-#### `componentPath`: String
+#### `componentReference`: mixed
 
-A path to an AMD component. E.g. `ui/compose`
+A path to an AMD component if using RequireJS E.g. `ui/compose`.
+
+If using webpack, it is expected to be the resulting object of requiring the component, E.g.
+
+```javascript
+describeComponent(require('ui/compose'), specDefinitions);
+```
 
 #### `specDefinitions`: Function
 
@@ -50,25 +56,26 @@ A function to execute after the component has loaded. Should contain spec defini
 
 
 
-### ddescribeComponent(componentPath, specDefinitions)
+### ddescribeComponent(componentReference, specDefinitions)
 
 As per describeComponent, but prevents execution of any other specs.
 
 
 
 
-### describeMixin(mixinPath, specDefinitions)
+### describeMixin(mixinReference, specDefinitions)
 
-Requires the mixin at mixinPath and executes specDefinitions.
+Requires the mixin at mixinReference and executes specDefinitions.
 
 * The Mixin is attached to a dummy Component
 * the dummy Component constructor is available from within specDefinitions as this.Component
 * To create a component instance, call `this.setupComponent`
 
 
-#### `mixinPath`: String
+#### `mixinReference`: mixed
 
-A path to an AMD mixin. E.g. `ui/with_close_button`
+RequireJS usage: A path to an AMD mixin. E.g. `ui/with_close_button`
+Webpack usage: Result of requiring mixin. E.g. `require('ui/with_close_button')`
 
 #### `specDefinitions`: Function
 
@@ -77,28 +84,29 @@ A function to execute after the mixin has loaded. Should contain spec definition
 
 
 
-### ddescribeMixin(mixinPath, specDefinitions)
+### ddescribeMixin(mixinReference, specDefinitions)
 
 As per describeMixin, but prevents execution of any other specs.
 
 
 
 
-### describeModule(modulePath, specDefinitions)
+### describeModule(moduleReference, specDefinitions)
 
-Requires the AMD module at modulePath and executes specDefinitions
+Requires the AMD module at moduleReference and executes specDefinitions
 
 * The module will be available as this.module from within specDefinitions.
 
-#### `modulePath`: String
+#### `moduleReference`: mixed
 
-A path to an AMD module. E.g. `utils/time`
+RequireJS usage: A path to an AMD module. E.g. `utils/time`
+Webpack usage: Result of requiring a module. E.g. `require('utils/time')`
 
 #### `specDefinitions`: Function
 
 A function to execute after the module has loaded. Should contain spec definitions.
 
-### ddescribeModule(modulePath, specDefinitions)
+### ddescribeModule(moduleReference, specDefinitions)
 
 As per describeModule, but prevents execution of any other specs.
 
