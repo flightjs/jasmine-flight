@@ -8,9 +8,8 @@ define(function (require) {
 
   var defineComponent = require('flight/lib/component');
   var Example = require('mock/example');
-  var component = isWebpack ? Example : 'mock/example';
 
-  describeComponent(component, function () {
+  describeComponent(Example, function () {
     describe('this.Component', function () {
       it('should be an Example component', function () {
         expect(this.Component).toEqual(Example);
@@ -30,34 +29,6 @@ define(function (require) {
 
       it('should reset `this.component` in a new context', function () {
         expect(this.component).toBeNull();
-      });
-    });
-
-    describe('defineComponent.teardownAll()', function () {
-      var result = [];
-
-      beforeEach(function () {
-        spyOn(defineComponent, 'teardownAll').and.callFake(function () {
-          result.push('call');
-        });
-      });
-
-      describe('automatically calls after each test', function () {
-        it('dummy', function () {
-          // do nothing
-        });
-
-        it('first call', function () {
-          expect(result.length).toEqual(1);
-        });
-
-        it('second call', function () {
-          expect(result.length).toEqual(2);
-        });
-
-        it('third call', function () {
-          expect(result.length).toEqual(3);
-        });
       });
     });
 

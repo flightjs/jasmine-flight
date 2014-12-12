@@ -17,6 +17,11 @@ module.exports = function (config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'],
 
+    preprocessors: {
+      'lib/jasmine-flight.js': ['webpack'],
+      'test/spec/**/*.js': ['webpack'],
+    },
+
     // list of files / patterns to load in the browser
     files: [
       // jQuery
@@ -25,21 +30,40 @@ module.exports = function (config) {
       'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
       // jasmine-flight (what we're actually testing!)
       'lib/jasmine-flight.js',
-      // flight
-      {pattern: 'bower_components/flight/**/*.js', included: false},
       // specs
-      {pattern: 'test/spec/**/*.js', included: false},
-      // mocks
-      {pattern: 'test/mock/**/*.js', included: false},
-      // test runner
-      'test/test-main.js',
+      'test/spec/**/*.js',
     ],
 
     // frameworks to use
     frameworks: [
-      'jasmine',
-      'requirejs'
+      'jasmine'
     ],
+
+    plugins: [
+        'karma-webpack',
+        'karma-chrome-launcher',
+        'karma-jasmine'
+    ],
+    
+    webpack: {
+      resolve: {
+        root: __dirname,
+        alias: {
+          'flight': 'bower_components/flight',
+          'mock/example': 'test/mock/example.js',
+          'mock/example_mixin': 'test/mock/example_mixin.js',
+          'mock/example_module': 'test/mock/example_module.js',
+        },
+      },
+      modulesDirectories: ['bower_components'],
+    },
+
+    webpackServer: {
+      progress: false,
+      stats: false,
+      debug: false,
+      quiet: true
+    },
 
     reporters: [process.env.TRAVIS ? 'dots' : 'progress'],
 

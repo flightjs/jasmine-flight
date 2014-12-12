@@ -4,59 +4,10 @@ define(function (require) {
   'use strict';
 
   var defineComponent = require('flight/lib/component');
-  var mixin = (typeof require.include === 'function') ? require('mock/example_mixin') : 'mock/example_mixin';
+  var mixin = require('mock/example_mixin');
+  console.log(mixin);
 
   describeMixin(mixin, function () {
-    describe('defineComponent.teardownAll()', function () {
-      var result = [];
-
-      beforeEach(function () {
-        spyOn(defineComponent, 'teardownAll').and.callFake(function () {
-          result.push('call');
-        });
-      });
-
-      describe('automatically calls after each test', function () {
-        it('dummy', function () {
-          // do nothing
-        });
-
-        it('first call', function () {
-          expect(result.length).toEqual(1);
-        });
-
-        it('second call', function () {
-          expect(result.length).toEqual(2);
-        });
-
-        it('third call', function () {
-          expect(result.length).toEqual(3);
-        });
-      });
-    });
-
-    describe('this.component.teardown()', function () {
-      var result = [];
-
-      beforeEach(function () {
-        spyOn(this.Component.prototype, 'teardown').and.callFake(function () {
-          result.push('call');
-        });
-      });
-
-      it('should automatically call before this.setupComponent() if component exists', function () {
-        expect(this.component).toBeNull();
-        this.setupComponent();
-        expect(result.length).toEqual(0);
-        this.setupComponent();
-        expect(result.length).toEqual(1);
-      });
-
-      it('should be called by afterEach of before `it`', function () {
-        expect(result.length).toEqual(3);
-      });
-    });
-
     describe('this.setupComponent()', function () {
       it('provides the correct $node attribute', function () {
         expect(this.$node).toBeNull();
