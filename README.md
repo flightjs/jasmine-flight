@@ -4,13 +4,14 @@ Extensions to the Jasmine test framework for use with [Flight](https://github.co
 
 # Getting started
 
-Include [jasmine-flight.js](https://raw.github.com/flightjs/jasmine-flight/master/lib/jasmine-flight.js)
+Include [jasmine-flight.js](https://raw.github.com/andrewk/webpack-jasmine-flight/master/lib/jasmine-flight.js)
 in your app and load it in your test runner.
 
 Or install it with [Bower](http://bower.io/):
 
 ```bash
-bower install --save-dev jasmine-flight
+# TODO- register with bower
+# bower install --save-dev webpack-jasmine-flight
 ```
 
 jasmine-flight depends on [jasmine](https://github.com/pivotal/jasmine)
@@ -226,6 +227,7 @@ review the [guidelines for contributing](CONTRIBUTING.md).
 ## Authors
 
 * [@tbrd](http://github.com/tbrd)
+* webpack modifications by [@andrewk](http://github.com/andrewk)
 
 ## Thanks
 
