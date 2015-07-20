@@ -199,7 +199,7 @@ describeComponent('ui/text', function () {
     this.setupComponent({
       username: 'bob'
     });
-    expect(spyEvent).toHaveBeenTriggeredOnAndWith(document {
+    expect('data-username').toHaveBeenTriggeredOnAndWith(document, {
       username: 'bob'
     });
   });
