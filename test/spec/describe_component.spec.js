@@ -7,6 +7,19 @@ define(function (require) {
   var Example = require('mock/example');
 
   describeComponent('mock/example', function () {
+    describe('jasmine.Clock.useMock', function(){
+      beforeEach(function(){
+        jasmine.Clock.useMock();
+      });
+      it('works like usual', function(){
+        var called;
+        setTimeout(function(){
+            called=true;
+        }, 1000);
+        jasmine.Clock.tick(1001);
+        expect(called).toBeTruthy();
+      });
+    });
     describe('this.Component', function () {
       it('should be an Example component', function () {
         expect(this.Component).toEqual(Example);
